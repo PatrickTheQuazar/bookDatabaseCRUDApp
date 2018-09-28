@@ -1,0 +1,40 @@
+What do I want to build?
+A: A messenger app. 
+What do I want to do with this app?
+A:CRUD:
+    -Create messages
+    -Read messages
+    -Update posts
+    -Delete posts
+Any cool features?
+A:We'll deal with that later
+Mmkay so... where should we start?
+A: I think we should start with the logic and the templating
+Logic?
+A: Yeah! You know, the backbones of the app, and then we can focus on style and looks
+Ohhhh Mmkay so... Where in the logic should we start?
+Well...
+    1. What do I want people to write?
+    A:Instant messages
+    2. About what?
+    A:Who cares! Just let people message each other, and we can focus on the rest later on.
+    3. Mmkay, so how about we send regular texts and pics and stuff?
+    A: Sounds Perfect!!!
+    4. So starting out with the logic.... let's have this:
+        How can I send text messages?
+            A: select the recipient, write text, and then press the send button.
+                Code: Who knows what kind of code to write to make this work... but screw it let's do it!
+        Who can I send messages to?
+        Where will my messages go?
+        Can there be a place where I see all of my recent messages?
+        Can I send the same message to multiple people?
+        How fast can it be?
+        Can I create an account?
+        Can I add a user profile?
+        
+        
+        First steps:
+        set up server, landing page, home page
+            -create package.json, add express, ejs, and several other packages, but I'll do that all in time. 
+             
+        
