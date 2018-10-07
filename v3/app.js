@@ -1,6 +1,9 @@
 var express     = require('express'),
     app         = express(),
-    bodyParser  = require('body-parser');
+    bodyParser  = require('body-parser')
+    mongoose    = require("mongoose"),
+    Book        = require("./models/book");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
