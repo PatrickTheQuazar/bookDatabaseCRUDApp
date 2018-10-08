@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 
+// schema for a user creating their own book.
 var bookSchema = new mongoose.Schema({
    name: String,
    bookAuthor: String,
