@@ -7,7 +7,7 @@ var express     = require('express'),
 
 // We'll need to connect this application to mongo database using the
 // "mongoose.connect" method
-mongoose.connect("mongodb://localhost/book_database");
+mongoose.connect("mongodb://localhost/book_database", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 seedDB();
@@ -17,7 +17,7 @@ seedDB();
 app.get("/", function(req, res){
     res.render("landing");
 });
-
+// Index - get all books from DB
 app.get("/index", function(req, res){
     Book.find({}, function(err, allBooks){
         if(err){
@@ -34,10 +34,10 @@ app.post("/index", function(req, res){
    var name = req.body.name;
    var image = req.body.image;
    var desc = req.body.description;
-   var author = req.body.image.author; 
+   var author = req.body.author; 
    
 //   pass in newBook object 
-   var newBook = {name:name, image:image};
+   var newBook = {name:name, image:image, description: desc, author: author};
 //   push each new book into the array to be portrayed onto the screen
     Book.create(newBook, function(err, newlyCreated){
         if(err){
