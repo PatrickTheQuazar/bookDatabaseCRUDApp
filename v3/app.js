@@ -33,6 +33,9 @@ app.post("/index", function(req, res){
 //   Define our book names and images
    var name = req.body.name;
    var image = req.body.image;
+   var desc = req.body.description;
+   var author = req.body.image.author; 
+   
 //   pass in newBook object 
    var newBook = {name:name, image:image};
 //   push each new book into the array to be portrayed onto the screen
@@ -46,7 +49,7 @@ app.post("/index", function(req, res){
     });
 });
 
-// NEW - Show form to create new campground
+// NEW - Show form to create new book
 app.get("/index/new", function(req, res){
    res.render("new"); 
 });
