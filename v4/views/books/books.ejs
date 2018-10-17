@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <!--Page that displays the user's most recent and most popular books-->
 
@@ -29,7 +29,7 @@
                              <!--The argument "site" in the for each above is 
                             being used because that is the name of each 
                             campground the for each loops through-->
-                            <a href = "/books/<%= site._id %>" class = "btn btn-primary"></a> 
+                            <a href = "/index/<%= site._id %>" class = "btn btn-primary">More Info</a> 
                         </p>
                     </div>
                 </div>
@@ -37,4 +37,4 @@
     </div>
 </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>

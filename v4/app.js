@@ -8,7 +8,7 @@ var express     = require('express'),
 
 // We'll need to connect this application to mongo database using the
 // "mongoose.connect" method
-mongoose.connect("mongodb://localhost/book_database", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost/book_database_v4", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 seedDB();
@@ -24,7 +24,7 @@ app.get("/index", function(req, res){
         if(err){
             console.log(err);
         }else{
-            res.render("books/books", {books: allBooks});     
+            res.render("books/books", {books:allBooks});     
         }
     });
 });
@@ -66,6 +66,43 @@ app.get("/index/:id", function(req, res){
         res.render("books/show", {book: foundBook});
        }
    });
+});
+
+////////////////////////////////////////////
+// COMMENT ROUTES
+////////////////////////////////////////////
+
+app.get("/index/:id/comments/new", function(req, res){
+    Book.findById(req.params.id, function(err, thatBook){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("comments/new", {book: thatBook});
+        }
+    });
+});
+
+app.post("/index/:id/comments", function(req, res){
+    // lookup book by using ID
+    Book.findById(req.params.id, function(err, thatOtherBook){
+      if(err){
+          console.log(err);
+          res.redirect("/index");
+      } else{
+        //   Create new comment
+          Comment.create(req.body.comment, function(err, comment){
+              if(err){
+                  console.log(err);
+              } else{
+                //   connect new comment to campground
+                  thatOtherBook.comments.push(comment);
+                  thatOtherBook.save();
+                //   redirect to campground show
+                  res.redirect('/index/' + thatOtherBook._id);
+              }
+          })
+      }
+    });
 });
 
 app.get("*", function(req, res){
