@@ -1,9 +1,17 @@
-<%= include ../partials/header %>
+<% include ../partials/header %>
+<h1><%=book.name%></h1>
 
-<h1><%= book.name %></h1>
-
-<h5><%= book.bookAuthor %></h5>
+<img src="<%= book.image %>">
 
 <p><%= book.description %></p>
 
-<%= include ../partials/footer %>
+<p>
+    <a class="btn btn-success" href="/campgrounds/<%= book._id %>/comments/new">Add New Comment</a>
+</p>
+
+<% book.comments.forEach(function(comment){ %>
+    <p>
+        <strong><%= comment.author %></strong> - <%= comment.text %>
+    </p>
+<% }) %>
+<% include ../partials/footer %>
