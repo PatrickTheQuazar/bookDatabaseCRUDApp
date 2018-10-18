@@ -1,12 +1,12 @@
 <% include ../partials/header %>
-<h1><%=book.name%></h1>
+<h1><%= book.name %></h1>
 
 <img src="<%= book.image %>">
 
 <p><%= book.description %></p>
 
 <p>
-    <a class="btn btn-success" href="/campgrounds/<%= book._id %>/comments/new">Add New Comment</a>
+    <a class="btn btn-success" href="/index/<%= book._id %>/comments/new">Add New Comment</a>
 </p>
 
 <% book.comments.forEach(function(comment){ %>
