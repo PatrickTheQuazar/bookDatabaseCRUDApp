@@ -8,9 +8,10 @@ var express     = require('express'),
 
 // We'll need to connect this application to mongo database using the
 // "mongoose.connect" method
-mongoose.connect("mongodb://localhost/book_database_v4", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost/book_database_v5", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
 seedDB();
 // Database is now getting ready for setup. Will continue in coming days :)
 
