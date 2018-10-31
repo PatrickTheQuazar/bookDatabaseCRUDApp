@@ -142,7 +142,9 @@ app.post("/register", function(req, res){
           console.log(err);
           return res.render("register");
       } 
-      passport.authenticate()
+      passport.authenticate("local")(req, res, function(){
+         res.redirect("/index"); 
+      });
    });
 });
 
