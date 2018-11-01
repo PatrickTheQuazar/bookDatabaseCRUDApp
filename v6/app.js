@@ -7,7 +7,7 @@ var express     = require('express'),
     Book        = require("./models/book"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
-    seedDB    = require("./seeds");
+    seedDB      = require("./seeds");
 
 // We'll need to connect this application to mongo database using the
 // "mongoose.connect" method
@@ -21,7 +21,7 @@ seedDB();
 app.use(require("express-session")({
     secret: "Apple Pie",
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false
 }));
 
 app.use(passport.initialize());
@@ -160,6 +160,12 @@ app.post("/login", passport.authenticate("local",
         successRedirect: "/index",
         failureRedirect: "/login"
     }), function(req, res){});
+    
+// logic route
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/index");
+});
     
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
